@@ -5,6 +5,9 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Error from "./Pages/Error";
 import Map from "./Pages/Map";
+import "@mantine/core/styles.css";
+
+import { MantineProvider } from "@mantine/core";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,9 +42,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+      <MantineProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </MantineProvider>
     </>
   );
 }
